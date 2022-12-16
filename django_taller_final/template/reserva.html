@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Reservas Agendadas</title>
+</head>
+<body class="container mt-5">
+    <div class="alert alert-primary display-1 text-center"><text class="fs-1">RESERVAS AGENDADAS</text></div>
+    {% if reservas %}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse fs-5">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Fecha Inscripcion</th>
+                <th>Hora Inscripcion</th>
+                <th>Institucion</th>
+                <th>Estado</th>
+                <th>Observacion</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.id}}</td>
+                <td>{{ reserva.nombre}}</td>
+                <td>{{ reserva.telefono}}</td>
+                <td>{{ reserva.fecha}}</td>
+                <td>{{ reserva.hora}}</td>
+                <td>{{ reserva.institucion}}</td>
+                <td>{{ reserva.estado}}</td>
+                <td>{{ reserva.observacion}}</td>
+                <td><a href="/actualizarReserva/{{reserva.id}}" class="btn btn-dark btn-sm"><i class="bi bi-pencil"></i></td>
+                <td><a href="/eliminarReserva/{{reserva.id}}" class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>No se encuentran reservas en el sistema</strong>
+    </div>
+    {% endif %}
+    
+    
+    <div class="row">
+    <div class="col"><a href="../" class="btn btn-danger"><text class="fs-4">Volver al Inicio</text></a></div>
+    <div class="col"><a href="../listaInscrito/" class="btn btn-dark float-end"><text class="fs-4">Lista Inscritos</text></a></div>
+    <div class="col"><a href="../agregarReserva/" class="btn btn-dark float-end"><text class="fs-4">Añadir Inscripcion</text></a></div>
+    </div>
+    
+</body>
+</html>
